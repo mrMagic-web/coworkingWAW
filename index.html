@@ -6,6 +6,7 @@
     <title>CoworkingWAW</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" />
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"></link>
 </head>
 
@@ -18,25 +19,67 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-light dropdown-toggle advanced-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="dropdown-menu dropdown-menu-right advanced-search-area">
+                            <div class="input-group-btn">
+                                <div class="row w-100">
+                                    <div class="col">
+                                        <label class="form-control-label" for="form_location">Location</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Location" id="form_location" aria-label="">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label" for="form_distance">Distance</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Distance" aria-label="Amount (to the nearest dollar)">
+                                            <span class="input-group-addon">km</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <div class="row mt-4 mb-4">
+                                <div class="col">
+                                    Filter by price: <span id="ex6CurrentSliderValLabel" class="ml-3"><span id="ex6SliderVal">40,60</span> zł
+                                    <br/>
+                                    <b class="mr-3">From 0 zł </b>
+                                    <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="[40, 60]" />
+                                    <b class="ml-3"> To 100 zł</b>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    Filter by rating: <span id="ex7CurrentSliderValLabel" class="ml-3"><span id="ex7SliderVal">3,5</span> stars
+                                    <br/>
+                                    <b class="mr-3">From 1 </b>
+                                    <input id="ex7" type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3, 5]" />
+                                    <b class="ml-3"> To 5 stars</b>
+                                    </span>
+                                </div>
                             </div>
-                            <br>
-                            <div class="input-group">
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <div id='facilities_select' class="row mt-4 mb-4">
+                                <div class="col">
+                                    <b>Facilities:</b>
+                                    <ul>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-wifi" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-volume-down" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-shower " aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-id-card-o" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-plug" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-glass" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-bar-chart" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-automobile" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-cutlery" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-leaf" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-recycle" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-secondary" href="#" role="button"><i class="fa fa-bicycle" aria-hidden="true"></i></button></li>
+                                    </ul>
+                                </div>
+                                
                             </div>
                         </div>
                         <button class="btn btn-primary button-search" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
-                </div>
             </nav>
             <div id="map">
             </div>
@@ -62,36 +105,12 @@
                             <div class="row">
                                 <div class="col-6">
                                     <ul>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-wifi" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-volume-down" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-bath " aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-plug" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-glass" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-wifi" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-volume-down" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-bath " aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-id-card-o" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-plug" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-glass" aria-hidden="true"></i></button></li>
                                     </ul>
                                 </div>
                                 <div class="col-6">
@@ -120,31 +139,11 @@
                             <div class="row">
                                 <div class="col-6">
                                     <ul>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-wifi" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-desktop" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-film " aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-glass" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-info" href="#" role="button">
-                                                <i class="fa fa-plug" aria-hidden="true"></i>
-                                            </button>
-                                        </li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-wifi" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-desktop" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-film " aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-glass" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-plug" aria-hidden="true"></i></button></li>
                                     </ul>
                                 </div>
                                 <div class="col-6">
@@ -169,22 +168,55 @@
             </div>
         </section>
         <section id="screen_detailed-info">
-  
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="row">
+                        <div class="col-8">
+                            <h4>List group item heading</h4>
+                            <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+                            </p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-wifi" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-volume-down" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-bath " aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-id-card-o" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-plug" aria-hidden="true"></i></button></li>
+                                        <li><button class="btn btn-primary" href="#" role="button"><i class="fa fa-glass" aria-hidden="true"></i></button></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star " aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <img src="assets/img/offices/office2.jpg" class="rounded img-fluid" alt="">
+                        </div>
+                    </div>
+                </a>
         </section>
-    </div>
-    <!-- Small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Name of the place</button>
-    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-               <h1>adjsad</h1>
+        </div>
+        <!-- Small modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Name of the place</button>
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <h1>adjsad</h1>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.min.js"></script>
+        <script src="assets/js/script.js"></script>
 </body>
 
 </html>
